@@ -1,0 +1,31 @@
+.obsidian/
+.trash/
+.DS_Store
+Thumbs.db
+.env
+.venv/
+__pycache__/
+*.pyc
+
+# Diaries are often private. Keep the folder, ignore the files.
+raw/diaries/**
+!raw/diaries/.gitkeep
+!raw/diaries/.gitignore
+
+# Keep captions; skip bulky media by default.
+*.mp4
+*.mkv
+*.mov
+*.webm
+*.mp3
+*.wav
+*.m4a
+*.flac
+*.ogg
+*.png
+*.jpg
+*.jpeg
+*.webp
+*.gif
+!raw/**/*.vtt
+!raw/**/*.srt
