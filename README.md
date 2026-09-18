@@ -155,8 +155,16 @@ flowchart TD
 
 ## Credits
 
+Influences:
+
 - [Andrej Karpathy](https://x.com/karpathy), [LLM Knowledge Bases](https://x.com/i/status/2039805659525644595) (2 Apr 2026) — ingest into `raw/`, compile a wiki, ask questions against it. `compile-wiki` is his verb. This kit still uses a search index; his small-corpus “no vector store” claim does not apply wholesale.
 - [Tiago Forte](https://www.buildingasecondbrain.com/), *Building a Second Brain* — the problem that notes do not help until they show up at the point of work. This kit does not teach his folders or workflow.
+- [Niklas Luhmann](https://en.wikipedia.org/wiki/Zettelkasten) / Zettelkasten (slip box) — one optional style for `raw/notes`. Not required, and not a folder in this kit.
+
+Tools (not this repo):
+
+- [MemPalace](https://github.com/MemPalace/mempalace) — required search index. `scripts/index_vault.py` writes pointers into it; it does not replace MemPalace, and MemPalace does not auto-index.
+- [Obsidian](https://obsidian.md) — human editor for the markdown. Optional. The files are plain `.md`.
 
 ## License
 
