@@ -1,6 +1,8 @@
-# The Context You Already Earned
+# bamboo-slip
 
-Starter kit from the JB Agentic Meetup talk: **turning personal knowledge into active AI context at the moment of need.**
+Chinese 简牍: the bamboo slip **is** the original record. Notes point back to it. They do not replace it.
+
+Starter kit from the JB Agentic Meetup talk *The Context You Already Earned*: turning personal knowledge into active AI context at the moment of need.
 
 This is an empty vault plus two skills. It is not anyone's personal notes.
 

@@ -2,6 +2,8 @@
 
 A software or AI builder who already has notes, articles, transcripts, or code, and wants an assistant to use that material at the point of work.
 
+The kit is named **bamboo-slip** (简牍): keep the original slip; compile only as a pointer back.
+
 # Must be able to
 
 1. Drop a trusted source into `raw/` and keep it verbatim
