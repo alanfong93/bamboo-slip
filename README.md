@@ -153,6 +153,11 @@ flowchart TD
 - Diaries often should not be public; this repo gitignores `raw/diaries/*`
 - Do not paste private notes into a public fork
 
+## Credits
+
+- [Andrej Karpathy](https://x.com/karpathy), [LLM Knowledge Bases](https://x.com/i/status/2039805659525644595) (2 Apr 2026) — ingest into `raw/`, compile a wiki, ask questions against it. `compile-wiki` is his verb. This kit still uses a search index; his small-corpus “no vector store” claim does not apply wholesale.
+- [Tiago Forte](https://www.buildingasecondbrain.com/), *Building a Second Brain* — the problem that notes do not help until they show up at the point of work. This kit does not teach his folders or workflow.
+
 ## License
 
 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/). Copy and adapt with credit. Do not sell it. See `LICENSE`.
