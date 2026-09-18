@@ -155,4 +155,4 @@ flowchart TD
 
 ## License
 
-MIT. See `LICENSE`.
+[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/). Copy and adapt with credit. Do not sell it. See `LICENSE`.
