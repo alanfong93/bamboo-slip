@@ -6,7 +6,7 @@ Starter kit from the JB Agentic Meetup talk *The Context You Already Earned*: tu
 
 This is an empty vault plus two skills. It is not anyone's personal notes.
 
-**Monday habit (no install):** before you ask an AI to help with a task, give it one source you already trust on that topic, and require the answer to point back to it.
+**First step:** before you ask an AI to help with a task, give it one source you already trust on that topic, and require the answer to point back to it. Try this with the AI you already use: attach the source, paste a relevant excerpt, or give it a URL it can read. `bamboo-slip` is optional setup for a durable vault.
 
 ## What this is
 
@@ -17,13 +17,15 @@ Years of notes, articles, transcripts, and decisions do not help a new chat unle
 - MemPalace — **search index**, required, run by you after writes
 - Obsidian — for humans to read **and** write the markdown
 
-Tags are for subject. Folders are for media type.
+Tags are for subject and cross-cutting topics. Folders group source types and collections.
 
 ## Layout
 
 ```
 raw/articles/
 raw/books/
+raw/courses/     # course materials and notes
+raw/newsletter/  # newsletters kept as received
 raw/videos/      # store captions (.vtt / .srt). Keep bulky media out of git.
 raw/podcasts/    # same: captions, not the audio, unless you choose to.
 raw/images/
@@ -36,11 +38,35 @@ skills/index-vault/
 scripts/index_vault.py
 ```
 
+Movies are videos: keep movie captions in `raw/videos/` and identify them with tags rather than a separate `raw/movies/` folder. Course and newsletter folders are provided as convenient source collections; use tags to describe their subjects.
+
 For videos and podcasts in another language (for example Chinese): transcribe with Whisper, keep the **original** captions and a translation.
 
 ## Skills
 
-Only two. Copy `skills/compile-wiki` and `skills/index-vault` into your agent host if it does not load `skills/` from the repo.
+The two canonical skills live in `skills/`. Agent hosts discover project skills from different directories, so copy those folders into the discovery path for the host you use. Do not edit the installed copies; make changes in `skills/` first.
+
+| Host | Project discovery path |
+|---|---|
+| Claude Code | `.claude/skills/` |
+| Codex | `.agents/skills/` |
+| OpenCode | `.agents/skills/` |
+
+For Claude Code, run from the repository root in PowerShell:
+
+```powershell
+New-Item -ItemType Directory -Force .claude/skills | Out-Null
+Copy-Item -Recurse skills/compile-wiki, skills/index-vault .claude/skills/
+```
+
+For Codex or OpenCode, use `.agents/skills/` instead:
+
+```powershell
+New-Item -ItemType Directory -Force .agents/skills | Out-Null
+Copy-Item -Recurse skills/compile-wiki, skills/index-vault .agents/skills/
+```
+
+On macOS/Linux, the equivalent is `mkdir -p .claude/skills && cp -R skills/compile-wiki skills/index-vault .claude/skills/` for Claude Code, or replace `.claude/skills` with `.agents/skills` for Codex/OpenCode. If either destination already contains these skill folders, inspect it before copying so you do not overwrite local changes. To update an installed skill, copy its `SKILL.md` from `skills/<skill-name>/` to the matching installed skill folder. Commit the host discovery folder if the skills should load automatically for everyone using the project; otherwise keep the canonical `skills/` copies and follow these steps in each clone.
 
 | Skill | Job |
 |---|---|
@@ -65,6 +91,15 @@ python scripts/index_vault.py --vault . --palace "<PALACE_PATH>" --sync
 ```
 
 Pass `--palace` **exactly** as the MemPalace server uses it.
+
+### First-run setup
+
+1. Install MemPalace and configure its MCP server in the agent host you use. Follow the [MemPalace installation guide](https://github.com/MemPalace/mempalace).
+2. Install the `compile-wiki` and `index-vault` skills using the host-specific copy steps in [Skills](#skills) above. The canonical source is `skills/` in this repository.
+3. Find the exact MemPalace path used by the server and pass it to `--palace`.
+4. Add a source under `raw/`, compile a cited note under `wiki/`, then run the indexing command above after the write.
+
+The indexer supports Markdown plus `.vtt` and `.srt` caption files. It stores a short searchable excerpt and a relative path; originals remain in the vault. A complete scan is required before it changes pointers. Use the same stable vault location when indexing: its path identifies its pointers, and a move creates a new identity rather than automatically deleting the old one.
 
 ## How the pieces talk
 
@@ -150,14 +185,14 @@ flowchart TD
 
 - A cited wiki note is not automatically true
 - Retrieval can miss
-- Diaries often should not be public; this repo gitignores `raw/diaries/*`
+- Diaries often should not be public; this repo gitignores `raw/diaries/*`. A compiled `wiki/` note or its MemPalace excerpt can still reveal private material, so review the destination before compiling or indexing private sources.
 - Do not paste private notes into a public fork
 
 ## Credits
 
 Influences:
 
-- [Andrej Karpathy](https://x.com/karpathy), [LLM Knowledge Bases](https://x.com/i/status/2039805659525644595) (2 Apr 2026) — ingest into `raw/`, compile a wiki, ask questions against it. `compile-wiki` is his verb. This kit still uses a search index; his small-corpus “no vector store” claim does not apply wholesale.
+- [Andrej Karpathy](https://x.com/karpathy), [LLM Knowledge Bases](https://x.com/i/status/2039805659525644595) (2 Apr 2026) — ingest into `raw/`, compile a wiki, ask questions against it. `compile-wiki` is his verb. This kit also uses a search index for durable vaults and cross-session lookup; his post describes index files and a small search engine, and its claim is scoped to a small corpus.
 - [Tiago Forte](https://www.buildingasecondbrain.com/), *Building a Second Brain* — the problem that notes do not help until they show up at the point of work. This kit does not teach his folders or workflow.
 - [Niklas Luhmann](https://en.wikipedia.org/wiki/Zettelkasten) / Zettelkasten (slip box) — one optional style for `raw/notes`. Not required, and not a folder in this kit.
 

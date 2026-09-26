@@ -31,6 +31,8 @@ This is not verification. A compiled note is a cited synthesis. Retrieval can mi
 5. Update neighbouring wiki notes if this source changes them.
 6. Run **`index-vault`**. Compiling is a vault write.
 
+Before compiling a diary or other private source, check that the wiki destination is appropriate for that material. Wiki notes may be tracked in Git, and indexing stores a searchable excerpt in MemPalace.
+
 ## Wiki note format
 
 ```markdown
@@ -64,6 +66,7 @@ Wikilinks, not relative paths. Bump `updated:` only when meaning changes.
 ## Do not
 
 - Rewrite `raw/` bodies
+- Compile private material into a tracked or searchable destination without reviewing its privacy implications
 - Flatten `wiki/` into one file
 - Add `index.md` as a fake catalog
 - Teach PARA

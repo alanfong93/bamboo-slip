@@ -36,9 +36,11 @@ If `scripts/index_vault.py` cannot import MemPalace, stop and tell the user to i
 
 ## What gets indexed
 
-Lightweight pointers: title, path, tags, first 300 characters. The agent then reads the `.md` file. Do not dump whole notes into the palace.
+Lightweight pointers: title, path, tags, and the first 300 characters of Markdown or extracted caption text. The agent then reads the source file from the vault. Do not dump whole notes into the palace.
 
-Default folders: `raw/` and `wiki/`. Diaries may be present but gitignored; do not scrape ignored diary files back into git.
+Default folders: `raw/` and `wiki/`. Markdown, `.vtt`, and `.srt` are indexed. Captions become a short text excerpt with cue numbers and timestamps omitted; the original files are not modified. Diaries may be present but gitignored; do not scrape ignored diary files back into git.
+
+The indexer scans all expected source directories before writing pointers. If the vault is incomplete or any source cannot be read, fix the reported problem and retry; do not force pruning after an incomplete scan. Pointers are scoped to the normalized vault path, so keep that path stable across runs. Moving the vault creates a new pointer identity.
 
 ## Do not
 
