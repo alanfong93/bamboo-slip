@@ -2,7 +2,7 @@
 
 *Jiandu* (简牍 / 簡牘), often translated into English as “bamboo slips,” refers to historical writing slips made from bamboo or wood. The project name reflects the idea that the original source is the record: compiled notes point back to it rather than replacing it.
 
-Starter kit from the JB Agentic Meetup talk *The Context You Already Earned*: turning personal knowledge into active AI context at the moment of need.
+Starter kit from the [JB Agentic Meetup](https://luma.com/l4difn16?tk=UbXIUI) talk *The Context You Already Earned*: turning personal knowledge into active AI context at the moment of need.
 
 This is an empty vault plus two skills. It is not anyone's personal notes.
 
@@ -46,7 +46,7 @@ The indexer creates MemPalace pointers for Markdown, VTT, and SRT files. Image o
 
 ## Skills
 
-The canonical copies of the two skills live in `skills/`. Ask your AI agent to copy them into the location expected by your harness. Edit the canonical files here; the agent can copy them again when you want to update its installed skills.
+The two skills are in `skills/`. Ask your AI agent to install them for your harness. You can edit the installed copies directly. To share a change with this project, edit the files in `skills/` too.
 
 | Skill | Job |
 |---|---|
