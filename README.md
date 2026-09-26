@@ -1,46 +1,48 @@
-# bamboo-slip
+# jiandu
 
-Chinese 简牍: the bamboo slip **is** the original record. Notes point back to it. They do not replace it.
+*Jiandu* (简牍 / 簡牘), often translated into English as “bamboo slips,” refers to historical writing slips made from bamboo or wood. The project name reflects the idea that the original source is the record: compiled notes point back to it rather than replacing it.
 
 Starter kit from the JB Agentic Meetup talk *The Context You Already Earned*: turning personal knowledge into active AI context at the moment of need.
 
 This is an empty vault plus two skills. It is not anyone's personal notes.
 
-**First step:** before you ask an AI to help with a task, give it one source you already trust on that topic, and require the answer to point back to it. Try this with the AI you already use: attach the source, paste a relevant excerpt, or give it a URL it can read. `bamboo-slip` is optional setup for a durable vault.
+**First step:** before you ask an AI to help with a task, give it one source you already trust on that topic, and require the answer to point back to it. Try this with the AI you already use: attach the source, paste a relevant excerpt, or give it a URL it can read. `jiandu` is optional setup for a durable vault.
 
 ## What this is
 
 Years of notes, articles, transcripts, and decisions do not help a new chat unless you put them in. This kit is the smallest layout that makes that repeatable:
 
-- `raw/` — verbatim sources, grouped by **media type**
+- `raw/` — verbatim sources, grouped into convenient source folders
 - `wiki/` — compiled, cited notes (Karpathy's "compile a wiki")
 - MemPalace — **search index**, required, run by you after writes
 - Obsidian — for humans to read **and** write the markdown
 
-Tags are for subject and cross-cutting topics. Folders group source types and collections.
+Folders help decide where to put a source; tags describe its subject and cross-cutting topics. Not every folder is a media type.
 
 ## Layout
 
 ```
-raw/articles/
-raw/books/
-raw/courses/     # course materials and notes
-raw/newsletter/  # newsletters kept as received
-raw/videos/      # store captions (.vtt / .srt). Keep bulky media out of git.
-raw/podcasts/    # same: captions, not the audio, unless you choose to.
-raw/images/
-raw/posts/
-raw/notes/       # free-style. Zettelkasten (Luhmann, slip box) is one style, not the rule.
-raw/diaries/     # often private; gitignored except the empty folder
+raw/articles/    # saved articles and long-form web writing
+raw/books/       # book excerpts and reading notes
+raw/courses/     # source materials from a course, such as handouts or transcripts
+raw/newsletter/  # newsletter issues kept as received
+raw/videos/      # video captions or transcripts (.vtt / .srt); not bulky video files
+raw/podcasts/    # podcast captions or transcripts; not audio files by default
+raw/images/      # images and related original source material
+raw/posts/       # social-media or forum posts
+raw/notes/       # original personal notes; Zettelkasten is one optional style
+raw/diaries/     # personal diary entries; often private and gitignored by default
 wiki/
 skills/compile-wiki/
 skills/index-vault/
 scripts/index_vault.py
 ```
 
-Movies are videos: keep movie captions in `raw/videos/` and identify them with tags rather than a separate `raw/movies/` folder. Course and newsletter folders are provided as convenient source collections; use tags to describe their subjects.
+Use tags to identify subjects across folders. For example, movie captions go in `raw/videos/` with a `movie` tag; course source materials go in `raw/courses/`, while an AI-compiled synthesis belongs in `wiki/`.
 
 For videos and podcasts in another language (for example Chinese): transcribe with Whisper, keep the **original** captions and a translation.
+
+The indexer creates MemPalace pointers for Markdown, VTT, and SRT files. Image or audio/video files are not themselves indexed as pointers; keep bulky media out of Git and store it separately if needed. Add a Markdown description or transcript under the relevant `raw/` folder when you want searchable text linked to media.
 
 ## Skills
 

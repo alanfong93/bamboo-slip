@@ -2,7 +2,7 @@
 
 A software or AI builder who already has notes, articles, transcripts, or code, and wants an assistant to use that material at the point of work.
 
-The kit is named **bamboo-slip** (简牍): keep the original slip; compile only as a pointer back.
+The kit is named **jiandu** (简牍 / 簡牘), often translated as “bamboo slips”: keep the original source; compile notes that point back to it.
 
 # Must be able to
 
