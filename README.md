@@ -44,29 +44,7 @@ For videos and podcasts in another language (for example Chinese): transcribe wi
 
 ## Skills
 
-The two canonical skills live in `skills/`. Agent hosts discover project skills from different directories, so copy those folders into the discovery path for the host you use. Do not edit the installed copies; make changes in `skills/` first.
-
-| Host | Project discovery path |
-|---|---|
-| Claude Code | `.claude/skills/` |
-| Codex | `.agents/skills/` |
-| OpenCode | `.agents/skills/` |
-
-For Claude Code, run from the repository root in PowerShell:
-
-```powershell
-New-Item -ItemType Directory -Force .claude/skills | Out-Null
-Copy-Item -Recurse skills/compile-wiki, skills/index-vault .claude/skills/
-```
-
-For Codex or OpenCode, use `.agents/skills/` instead:
-
-```powershell
-New-Item -ItemType Directory -Force .agents/skills | Out-Null
-Copy-Item -Recurse skills/compile-wiki, skills/index-vault .agents/skills/
-```
-
-On macOS/Linux, the equivalent is `mkdir -p .claude/skills && cp -R skills/compile-wiki skills/index-vault .claude/skills/` for Claude Code, or replace `.claude/skills` with `.agents/skills` for Codex/OpenCode. If either destination already contains these skill folders, inspect it before copying so you do not overwrite local changes. To update an installed skill, copy its `SKILL.md` from `skills/<skill-name>/` to the matching installed skill folder. Commit the host discovery folder if the skills should load automatically for everyone using the project; otherwise keep the canonical `skills/` copies and follow these steps in each clone.
+The canonical copies of the two skills live in `skills/`. Ask your AI agent to copy them into the location expected by your harness. Edit the canonical files here; the agent can copy them again when you want to update its installed skills.
 
 | Skill | Job |
 |---|---|
@@ -95,7 +73,7 @@ Pass `--palace` **exactly** as the MemPalace server uses it.
 ### First-run setup
 
 1. Install MemPalace and configure its MCP server in the agent host you use. Follow the [MemPalace installation guide](https://github.com/MemPalace/mempalace).
-2. Install the `compile-wiki` and `index-vault` skills using the host-specific copy steps in [Skills](#skills) above. The canonical source is `skills/` in this repository.
+2. Ask your agent to install the skills from `skills/` using your harness's usual project-skill setup.
 3. Find the exact MemPalace path used by the server and pass it to `--palace`.
 4. Add a source under `raw/`, compile a cited note under `wiki/`, then run the indexing command above after the write.
 
